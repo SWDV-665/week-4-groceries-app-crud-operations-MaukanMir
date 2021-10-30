@@ -1,0 +1,30 @@
+
+.title-container{
+display: flex;
+justify-content: center;
+align-items: center;
+color:aqua;
+}
+
+.header{
+    color:white;
+    font-size: 2rem;
+    text-align: center;
+    color: aqua;
+}
+
+.desc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    color:aqua;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
