@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="./tab1.page.scss">
   <ion-toolbar>
     <ion-title>
-     Grocery Items
+     {{title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,61 +23,31 @@
   </div>
   <!-- Title End--->
   
+  <!--Add Button-->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentAlertPrompt()" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    </ion-fab>
+    <!--End Button-->
 
-  <!-- Grocery Items Start--->
+ 
+
+  <!-- Grocery Items iterator--->
   <ion-list>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor ="let item of items; let i =index">
       <ion-item>
-        <ion-label>Milk</ion-label>
-    
+        <h2>{{item.name}}
+          <p class ="item-quantity">{{item.quantity}}</p>
+        </h2>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">delete</ion-item-option>
+        <ion-item-option (click)="removeItem(item,i)">delete</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Cookies</ion-label>
-    
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Ice Cream</ion-label>
-    
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Pasta</ion-label>
-    
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="delete(item)">delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding>
-      <ion-item>
-      <ion-label>Olive Oil</ion-label>
-    
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
 
   </ion-list>
 
-  <!-- Items Remove --->
+
+
 </ion-content>
