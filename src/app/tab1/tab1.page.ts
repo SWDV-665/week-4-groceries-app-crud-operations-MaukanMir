@@ -11,18 +11,18 @@ import { AlertController } from '@ionic/angular';
 export class Tab1Page {
   title = 'Grocery Items';
   items = [
-    {
-      name:'Milk',
-      quantity:2,
-    },
-    {
-      name:'Olive oil',
-      quantity:1,
-    },
-    {
-      name:'bread',
-      quantity:1,
-    },
+    // {
+    //   name:'Milk',
+    //   quantity:2,
+    // },
+    // {
+    //   name:'Olive oil',
+    //   quantity:1,
+    // },
+    // {
+    //   name:'bread',
+    //   quantity:1,
+    // },
   ];
 
   constructor(public toastController: ToastController, public alertController: AlertController ) {}
@@ -36,6 +36,26 @@ export class Tab1Page {
     });
     toast.present();
     this.items.splice(index,1);
+  }
+
+  async shareItem(item,index){
+    console.log('sharing item: ',item,index);
+    const toast = await this.toastController.create({
+      message: `Sharing the item: ${item.name}`,
+      duration: 2000
+    });
+    toast.present();
+    this.items.splice(index,1);
+  }
+
+   async editItem(item,index){
+    console.log('Editing item: ',item,index);
+    const toast = await this.toastController.create({
+      message: `Editing the item: ${item.name}`,
+      duration: 2000
+    });
+    toast.present();
+    this.editAlertPrompt(item,index);
   }
 
   addItem(){
@@ -72,6 +92,45 @@ export class Tab1Page {
           handler: data => {
             console.log('Confirm Ok',data);
             this.items.push(data);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+
+  async editAlertPrompt(item,index) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Edit Your Item',
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Item',
+          value: item.name
+        },
+        {
+          name: 'quantity',
+          placeholder: 'Quantity',
+          value:item.quantity
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: data=> {
+            console.log('Confirm Cancel',item.name);
+          }
+        }, {
+          text: 'save',
+          handler: item=> {
+            console.log('Confirm Ok',item);
+            this.items[index] = item;
           }
         }
       ]

@@ -1,16 +1,20 @@
-
+.header-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .title-container{
 display: flex;
 justify-content: center;
 align-items: center;
-color:aqua;
+color:#fff;
 }
 
 .header{
     color:white;
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
-    color: aqua;
+    color: #fff;
 }
 
 .desc{
@@ -18,7 +22,9 @@ color:aqua;
     justify-content: center;
     align-items: center;
     font-weight: 500;
-    color:aqua;
+    color:#fff;
+    font-size: 1.5rem;
+
 }
 
 .container{
@@ -27,9 +33,59 @@ color:aqua;
     justify-content: center;
     align-items: center;
     padding:10px;
+    background: #ad5389;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
 }
 
 .item-quantity{
     margin: 10px 0px;
-    color:aqua;
+    color: #fff;
+    
 }
+
+.icon-trash{
+    font-size: 25px;
+    padding:10px;
+    color:white;
+    
+}
+
+.icon-edit{
+    font-size: 25px;
+    padding:10px;
+    color:white;
+}
+
+.slide-red{
+    background-color: red;
+}
+
+.slide-green{
+    background-color: green;
+}
+
+
+.No-items{
+text-align: center;
+ background: #ad5389;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    padding:20px;
+}
+
+.slide-share{
+    background-color: blue;
+    color:white;
+}
+
+
+
+
+
+
+

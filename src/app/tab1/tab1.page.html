@@ -1,12 +1,18 @@
 <!-- Header Start--->
+
+
+  
+
 <ion-header [translucent]="true">
   <link rel="stylesheet" href="./tab1.page.scss">
   <ion-toolbar>
     <ion-title>
-     {{title}}
+      <div class ="header-title">{{title}} </div>
+  
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <!-- Header End Start--->
 
 <!-- Title Start--->
@@ -19,7 +25,7 @@
   </ion-header>
   <div class ="container"> 
     <h2 class ="header">Welcome to the Grocery App!</h2>
-    <p class ="desc">We will be filling items into this Grocery App!</p>
+    <p class ="desc">Let Us Help You!</p>
   </div>
   <!-- Title End--->
   
@@ -31,7 +37,8 @@
     </ion-fab>
     <!--End Button-->
 
- 
+ <!--Display 0 items in cart-->
+ <h1 class= "No-items" *ngIf ="items.length=== 0">There are no Items. </h1>
 
   <!-- Grocery Items iterator--->
   <ion-list>
@@ -41,8 +48,16 @@
           <p class ="item-quantity">{{item.quantity}}</p>
         </h2>
       </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="removeItem(item,i)">delete</ion-item-option>
+      <ion-item-options  side="end">
+        <ion-item-option class ="slide-red" (click)="removeItem(item,i)">
+          <ion-icon class ="icon-trash" name ="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option class ="slide-green" (click)="editItem(item,i)">
+          <ion-icon class ="icon-edit" name="create"></ion-icon>
+        </ion-item-option>
+        <ion-item-option class="slide-share" (click)="shareItem(item,i)">
+          <ion-icon class="icon-edit" name="share"></ion-icon>
+        </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 
@@ -51,3 +66,6 @@
 
 
 </ion-content>
+
+
+
