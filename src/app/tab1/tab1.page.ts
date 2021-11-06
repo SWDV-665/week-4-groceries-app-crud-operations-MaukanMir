@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -25,7 +26,7 @@ export class Tab1Page {
     // },
   ];
 
-  constructor(public toastController: ToastController, public alertController: AlertController ) {}
+  constructor(public toastController: ToastController, public alertController: AlertController, public socialSharing: SocialSharing ) {}
 
 
   async removeItem(item,index){
@@ -45,7 +46,14 @@ export class Tab1Page {
       duration: 2000
     });
     toast.present();
-    this.items.splice(index,1);
+let message ='Grocery Item - Name : ' + item.name  + 'Quantity: ' + item.quantity;
+let subject = 'Shared via Groceries app';
+
+this.socialSharing.share(message,subject).then(() => {
+  console.log('Successfully shared');
+}).catch((error) => {
+  console.log('Error while sharing',error);
+});
   }
 
    async editItem(item,index){
